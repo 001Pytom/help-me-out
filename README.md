@@ -1,14 +1,14 @@
-# 🎥 HelpMeOut
+#  HelpMeOut
 
 > A Chrome Extension + Web App to **record, manage, and share screen recordings** with transcript generation and social sharing.
 
-## 🚀 Overview
+##  Overview
 
 HelpMeOut is a productivity tool designed for educators, teams, and creators. It enables users to record their screen (and optionally mic/camera), generate shareable links, view and rename past recordings, and access transcripts — all through a clean dashboard.
 
 ---
 
-## 🧹 Monorepo Structure
+##  Monorepo Structure
 
 This project is managed with **Turborepo** and organized into:
 
@@ -24,27 +24,27 @@ helpmeout/
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🌐 Web App
+###  Web App
 
-* 🔐 Authentication (Google, Facebook, Email/Password)
-* 🎮 Video dashboard (titles, thumbnails, timestamps)
-* 📄 Auto transcript (Whisper/AssemblyAI)
-* 🔀 Video rename, search & filtering
-* 🔗 Shareable video links (WhatsApp, Telegram, etc)
-* 📱 Responsive UI built with ShadCN UI + Tailwind
+*  Authentication (Google, Facebook, Email/Password)
+*  Video dashboard (titles, thumbnails, timestamps)
+*  Auto transcript (Whisper/AssemblyAI)
+*  Video rename, search & filtering
+*  Shareable video links (WhatsApp, Telegram, etc)
+*  Responsive UI built with ShadCN UI + Tailwind
 
-### 🧹 Chrome Extension
+###  Chrome Extension
 
-* 🖥️ Record current tab or entire screen
-* 🎤 Toggle camera and microphone
-* ⏱️ Floating in-recording controls (pause, stop, timer)
-* ☁️ Auto upload & redirect to Web App dashboard
+*  Record current tab or entire screen
+*  Toggle camera and microphone
+*  Floating in-recording controls (pause, stop, timer)
+*  Auto upload & redirect to Web App dashboard
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 * **Frontend:** Next.js, TypeScript, TailwindCSS, ShadCN UI
 * **Extension:** Vite + React + MediaRecorder API
@@ -55,7 +55,7 @@ helpmeout/
 
 ---
 
-## 📁 Setup & Development
+##  Setup & Development
 
 ```bash
 # Clone
@@ -86,7 +86,7 @@ pnpm dev --filter extension
 
 ---
 
-## ✅ Project Status
+##  Project Status
 
 * [x] Project scaffolded with Turborepo
 * [x] Next.js Web App setup with Tailwind + ShadCN
@@ -97,7 +97,7 @@ pnpm dev --filter extension
 
 ---
 
-## 🧠 Contributing
+##  Contributing
 
 > PRs are welcome! Before pushing:
 
@@ -107,14 +107,6 @@ pnpm lint && pnpm build
 
 Follow [Conventional Commits](https://www.conventionalcommits.org/) and open clear PR descriptions.
 
----
 
-## 📄 License
 
-[MIT](LICENSE)
 
----
-
-## 💡 Credits
-
-Built by [You](https://github.com/your-username) & [Your Friend](https://github.com/your-friend) — powered by OpenAI & your ambition 🚀
