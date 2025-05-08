@@ -1,84 +1,120 @@
-# Turborepo starter
+# 🎥 HelpMeOut
 
-This Turborepo starter is maintained by the Turborepo core team.
+> A Chrome Extension + Web App to **record, manage, and share screen recordings** with transcript generation and social sharing.
 
-## Using this example
+## 🚀 Overview
 
-Run the following command:
+HelpMeOut is a productivity tool designed for educators, teams, and creators. It enables users to record their screen (and optionally mic/camera), generate shareable links, view and rename past recordings, and access transcripts — all through a clean dashboard.
 
-```sh
-npx create-turbo@latest
-```
+---
 
-## What's inside?
+## 🧹 Monorepo Structure
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+This project is managed with **Turborepo** and organized into:
 
 ```
-cd my-turborepo
-pnpm build
+helpmeout/
+🔝 apps/
+🔝🔝 web/         # Next.js + Tailwind Web App
+🔝🔝 extension/   # Chrome Extension (Vite + React)
+🔝 packages/
+🔝🔝 utils/       # Shared logic (upload, transcript, etc.)
+🔝🔝 ui/          # Shared components (optional)
 ```
 
-### Develop
+---
 
-To develop all apps and packages, run the following command:
+## ✨ Features
 
+### 🌐 Web App
+
+* 🔐 Authentication (Google, Facebook, Email/Password)
+* 🎮 Video dashboard (titles, thumbnails, timestamps)
+* 📄 Auto transcript (Whisper/AssemblyAI)
+* 🔀 Video rename, search & filtering
+* 🔗 Shareable video links (WhatsApp, Telegram, etc)
+* 📱 Responsive UI built with ShadCN UI + Tailwind
+
+### 🧹 Chrome Extension
+
+* 🖥️ Record current tab or entire screen
+* 🎤 Toggle camera and microphone
+* ⏱️ Floating in-recording controls (pause, stop, timer)
+* ☁️ Auto upload & redirect to Web App dashboard
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** Next.js, TypeScript, TailwindCSS, ShadCN UI
+* **Extension:** Vite + React + MediaRecorder API
+* **Auth:** NextAuth.js (Google, Facebook, Email)
+* **Transcripts:** Whisper / AssemblyAI API
+* **Storage:** Supabase / Firebase (to be decided)
+* **Monorepo Tooling:** Turborepo + pnpm
+
+---
+
+## 📁 Setup & Development
+
+```bash
+# Clone
+git clone https://github.com/your-org/helpmeout.git
+cd helpmeout
+
+# Install dependencies
+pnpm install
+
+# Start web app
+pnpm dev --filter web
+
+# Start extension (Vite dev server)
+pnpm dev --filter extension
 ```
-cd my-turborepo
-pnpm dev
+
+---
+
+## 📦 Scripts
+
+| Command                       | Description             |
+| ----------------------------- | ----------------------- |
+| `pnpm dev`                    | Start dev servers       |
+| `pnpm build`                  | Build all apps/packages |
+| `pnpm lint`                   | Lint all apps/packages  |
+| `pnpm dev --filter web`       | Run only Web app        |
+| `pnpm dev --filter extension` | Run only Extension      |
+
+---
+
+## ✅ Project Status
+
+* [x] Project scaffolded with Turborepo
+* [x] Next.js Web App setup with Tailwind + ShadCN
+* [ ] Chrome Extension screen recording MVP
+* [ ] Video upload & dashboard listing
+* [ ] Transcript generation integration
+* [ ] Social sharing + rename support
+
+---
+
+## 🧠 Contributing
+
+> PRs are welcome! Before pushing:
+
+```bash
+pnpm lint && pnpm build
 ```
 
-### Remote Caching
+Follow [Conventional Commits](https://www.conventionalcommits.org/) and open clear PR descriptions.
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+---
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## 📄 License
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+[MIT](LICENSE)
 
-```
-cd my-turborepo
-npx turbo login
-```
+---
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 💡 Credits
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+Built by [You](https://github.com/your-username) & [Your Friend](https://github.com/your-friend) — powered by OpenAI & your ambition 🚀
