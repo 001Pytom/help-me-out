@@ -69,7 +69,7 @@ export default function Home() {
 
           <div className="relative w-full sm:w-1/2">
             <Image 
-              src={"/heroImg.svg"}
+              src={"/heroImg.png"}
               alt="hero image"
               width={680}
               height={450}
