@@ -10,7 +10,7 @@ export function Header() {
     return (
         <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
             <div className="mx-auto max-w-[1440px] flex items-center justify-between py-3 px-4 md:px-8">
-                <Link href="/">
+                <Link href="/home">
                     <Image 
                         src={"/logo.png"}
                         alt="help me out logo"
@@ -49,15 +49,24 @@ export function Header() {
                     }`}
                 >
                     <nav className="flex flex-col items-center gap-6 py-6">
-                        <Link href="#features" className="text-[#141414] text-base font-medium">
+                        <Link 
+                            href="#features" 
+                            className="text-[#141414] text-base font-medium"
+                            onClick={() => setIsOpen(false)}
+                        >
                             Features
                         </Link>
-                        <Link href="#how-it-works" className="text-[#141414] text-base font-medium">
+                        <Link 
+                            href="#how-it-works" 
+                            className="text-[#141414] text-base font-medium"
+                            onClick={() => setIsOpen(false)}
+                        >
                             How It Works
                         </Link>
                         <Link
                             href="/"
                             className="text-[#120B48] font-semibold text-lg cursor-pointer"
+                            onClick={() => setIsOpen(false)}
                         >
                             Get Started
                         </Link>
