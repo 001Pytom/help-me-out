@@ -74,7 +74,7 @@ pnpm dev --filter extension
 
 ---
 
-## 📦 Scripts
+##  Scripts
 
 | Command                       | Description             |
 | ----------------------------- | ----------------------- |
