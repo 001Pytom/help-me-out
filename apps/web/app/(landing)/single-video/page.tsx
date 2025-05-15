@@ -1,6 +1,9 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 import { Copy, Facebook, SquarePen} from "lucide-react";
+import DropDown from "@/components/ui/dropdown";
 // import { Button } from "@/components/ui/button";
 
 export default function SingleVideo() {
@@ -12,6 +15,8 @@ export default function SingleVideo() {
         { time: "0:59", text: "First step. Open Facebook on your desktop or mobile device and locate \"Marketplace\" in the left-hand menu or at the top of the" },
         { time: "1:15", text: "First step. Open Facebook on your desktop or mobile device and locate \"Marketplace\" in the left-hand menu or at the top of the" },
     ]
+
+    const options = ["English", "French", "German", "Turkish"]
       
     return (
         <main className="mx-auto max-w-[1440px] md:px-8 px-4">
@@ -25,7 +30,7 @@ export default function SingleVideo() {
                         <Link href="/videos" className="hover:underline font-normal text-[#141414] text-opacity-70">Recent Videos</Link>
                         <span className="sm:mx-1 mx-0.5">/</span>
                     </li>
-                    <li className="text-[#413C6D] font-medium leading-normal">How To Create A Facebook Ad Listing</li>
+                    <li className="text-[#413C6D] w-[400px] truncate font-medium leading-normal">How To Create A Facebook Ad Listing</li>
                 </ol>
             </nav>
 
@@ -47,6 +52,14 @@ export default function SingleVideo() {
             <div className="mb-6">
                 <h4 className="sm:text-lg text-base font-medium leading-normal text-black mb-3">Transcript</h4>
 
+                <div className="py-3">
+                    <DropDown
+                        options={options}
+                        placeholder="Select Language"
+                        onSelectionChange={(val) => console.log("You selected:", val)}
+                    />
+                </div>
+
                 <div className="h-72 overflow-y-scroll md:pr-6 pr-2">
                     {steps.map((step, index) => (
                         <div
@@ -54,10 +67,10 @@ export default function SingleVideo() {
                             data-index={index}
                             className="flex items-start gap-4 sm:mb-10 mb-6"
                         >
-                            <p className="text-[#141414] sm:text-lg text-base font-medium leading-normal">
+                            <p className="text-[#141414] md:text-lg text-base font-medium leading-normal">
                                 {step.time}
                             </p>
-                            <p className="text-black sm:text-lg text-base font-normal leading-6">
+                            <p className="text-black md:text-lg text-base font-normal leading-6">
                                 {step.text}
                             </p>
                         </div>
