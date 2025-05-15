@@ -1,14 +1,26 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sen:wght@400..800&family=Sora:wght@100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
-
 @import "tw-animate-css";
-/* 
+
 @custom-variant dark (&:is(.dark *));
 
-
-
 @theme inline {
+  /* FONT FAMILY */
+  --font-inter: "Inter", sans-serif;
+  --font-sora: "Sora", sans-serif;
+  --font-sen: "Sen", sans-serif;
+  --font-work-sans: "Work Sans", sans-serif;
+
+  /* colors */
+  --color-black: hsl(0, 0%, 8%); /* #141414 */
+  --color-gray: hsl(247, 61%, 17%); /* #120B48 */
+  --color-gray-light: hsl(0, 0%, 26%); /* #434343 */
+  --color-gray-line: hsl(207, 21%, 75%); /* #B9C2C8 */
+  --color-gray-input: hsl(253, 17%, 75%); /* #B6B3C6 */
+  --color-primary: hsl(247, 61%, 17%); /* #120B48 */
+
+  /*  */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -81,7 +93,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
+/* .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -113,7 +125,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-}
+} */
 
 @layer base {
   * {
@@ -122,4 +134,4 @@
   body {
     @apply bg-background text-foreground;
   }
-} */
+}

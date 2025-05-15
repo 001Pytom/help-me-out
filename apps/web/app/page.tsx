@@ -8,6 +8,7 @@ export default function Home() {
         Record your screen, share instantly, and manage your video library in
         one clean dashboard.
       </p>
+      
     </main>
   );
 }
