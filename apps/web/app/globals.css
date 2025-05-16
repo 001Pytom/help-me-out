@@ -19,8 +19,12 @@
   --color-gray-line: hsl(207, 21%, 75%); /* #B9C2C8 */
   --color-gray-input: hsl(253, 17%, 75%); /* #B6B3C6 */
   --color-primary: hsl(247, 61%, 17%); /* #120B48 */
-
-  /*  */
+  --color-grayy-input-bg: hsla(248, 10%, 73%, 0.14); /* #B6B3C624 */
+  --color-gray-border: hsl(240, 13%, 91%); /* #E7E7ED */
+  --color-input-placeholder: hsl(0, 0%, 76%) /* ##C3C3C3 */;
+  --color-black-light: hsla(0, 0%, 0%, 0.1); /* #0000001A */
+  --color-white-card-bg: hsla(0, 0%, 98%, 0.5) /* #FBFBFB80*/;
+  /**/
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
