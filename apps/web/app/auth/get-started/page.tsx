@@ -5,7 +5,10 @@ import Navbar from "@/components/layout/navbar";
 import SocialButton from "@/components/social-button";
 import Image from "next/image";
 
+
 const GetStartedPage = () => {
+
+
   return (
     <div className="pt-10 px-6 w-full mb-9 flex flex-col gap-9 items-center">
       <Navbar />
@@ -50,6 +53,7 @@ const GetStartedPage = () => {
         </div>
 
         <AuthForm />
+
       </main>
       
     </div>
