@@ -68,6 +68,7 @@ export default function Home() {
             <VideoCard key={v.id} {...v} />
           ))}{" "}
         </div>
+        {/* <LogoutButton/> */}
       </section>
     </div>
   );
