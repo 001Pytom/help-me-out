@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Form,
   FormControl,
@@ -9,25 +11,72 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { login, signup } from "@/lib/utils/auth-helpers";
+import { Loader2 } from "lucide-react";
+import Link from "next/link";
 
-const formSchema = z.object({
+const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
 });
-const AuthForm = () => {
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: { email: "", password: "" },
+
+const signupSchema = z
+  .object({
+    email: z.string().email(),
+    name: z.string(),
+    password: z.string().min(6),
+    confirmPassword: z.string().min(6),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match",
   });
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    // console.log("Login testing", data);
-    console.log("Login testing");
-    // set email and password back to empty after sub,issiom
-    form.reset();
+const AuthForm = () => {
+  const [mode, setMode] = useState<"login" | "signup">("login");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const formSchema = mode === "login" ? loginSchema : signupSchema;
+  type FormValues = z.infer<typeof formSchema>;
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues:
+      mode === "login"
+        ? { email: "", password: "" }
+        : { email: "", password: "", confirmPassword: "", name: "" },
+  });
+
+  const onSubmit = async (
+    data: z.infer<typeof loginSchema | typeof signupSchema>
+  ) => {
+    setLoading(true);
+    try {
+      if (mode === "login") {
+        await login(data.email, data.password);
+        router.push("/"); // redirect to main app
+        // console.log(data);
+      } else {
+        const signupData = data as z.infer<typeof signupSchema>;
+        await signup(signupData.email, signupData.password, signupData.name);
+        router.push("/auth/verify-email"); // show verify email screen
+      }
+      form.reset();
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        alert(error.message || "Something went wrong");
+      } else {
+        alert("An unknown error occurred");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
     <Form {...form}>
       <form
@@ -41,11 +90,7 @@ const AuthForm = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input
-                  type="email"
-                  placeholder="Enter your email address"
-                  {...field}
-                />
+                <Input type="email" placeholder="Enter your email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -61,7 +106,7 @@ const AuthForm = () => {
               <FormControl>
                 <Input
                   type="password"
-                  placeholder="Enter your Password"
+                  placeholder="Enter your password"
                   {...field}
                 />
               </FormControl>
@@ -70,12 +115,86 @@ const AuthForm = () => {
           )}
         />
 
+        {mode === "signup" && (
+          <>
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Confirm Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      placeholder="Re-enter your password"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* // Display name field */}
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Display Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        )}
+
         <Button
           type="submit"
-          className="w-full p-1 bg-primary font-work-sans rounded-[0.5rem] py-4 px-5 text-white font-medium text-[1.125rem]   "
+          className="w-full bg-primary rounded-lg py-4 text-white font-medium text-lg"
+          disabled={loading}
         >
-          Sign Up
+          {loading ? (
+            <Loader2 className="w-5 h-5 animate-spin mx-auto" />
+          ) : mode === "login" ? (
+            "Log In"
+          ) : (
+            "Sign Up"
+          )}
         </Button>
+
+        {/* forgot password */}
+        <Link
+          href="/auth/forgot-password"
+          className="flex justify-end text-sm text-blue-600 italics hover:text-blue-800 "
+        >
+          Forgot password?
+        </Link>
+        {/* forgot password */}
+
+        <p className="text-end font-medium text-sm text-black italic">
+          {mode === "login"
+            ? "Don't have an account?"
+            : "Already have an account?"}{" "}
+          <button
+            type="button"
+            className="underline italic text-blue-600 hover:text-blue-800 "
+            onClick={() => {
+              const newMode = mode === "login" ? "signup" : "login";
+              setMode(newMode);
+
+              form.reset(
+                newMode === "login"
+                  ? { email: "", password: "" }
+                  : { email: "", password: "", confirmPassword: "", name: "" }
+              );
+            }}
+          >
+            {mode === "login" ? "Sign up" : "Login"}
+          </button>
+        </p>
       </form>
     </Form>
   );
