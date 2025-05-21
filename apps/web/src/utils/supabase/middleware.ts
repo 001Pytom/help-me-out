@@ -41,7 +41,7 @@ export const updateSession = async (request: NextRequest) => {
 
   const isAuthPage = path.startsWith("/auth");
   // const isGetStarted = path === "/auth/get-started";
-  const isProtectedPage = path === "/" || path.startsWith("/single-video");
+  const isProtectedPage = path === "/dashboard" || path.startsWith("/single-video");
 
   //  Block non-authenticated users from app pages
   if (!user && isProtectedPage) {
@@ -50,7 +50,7 @@ export const updateSession = async (request: NextRequest) => {
 
   //  Redirect logged-in users away from /auth pages
   if (user && isAuthPage) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
   return supabaseResponse;

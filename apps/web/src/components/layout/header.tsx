@@ -40,7 +40,7 @@ export function Header() {
         </button>
 
         <Link
-          href="/"
+          href="/auth/get-started"
           className="hidden sm:inline-block text-[#120B48] font-semibold text-lg cursor-pointer"
         >
           Get Started

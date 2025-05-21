@@ -58,7 +58,7 @@ const AuthForm = () => {
     try {
       if (mode === "login") {
         await login(data.email, data.password);
-        router.push("/"); // redirect to main app
+        router.push("/dashboard"); // redirect to main app
         // console.log(data);
       } else {
         const signupData = data as z.infer<typeof signupSchema>;

@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import VideoCard from "@/components/video-card";
 import { videos } from "@/lib/video-data";
-// import { createClient } from "@/utils/supabase/client";
+import { useUser } from "../../hooks/useUser";
 
 const now = new Date();
 const recent = videos.filter(
@@ -16,23 +16,21 @@ const older = videos.filter(
     (now.getTime() - new Date(v.date).getTime()) / (1000 * 60 * 60 * 24) > 7
 );
 
-// const supabase = createClient();
-// const {
-//   data: { user },
-// } = await supabase.auth.getUser();
-// console.log(user);
-// // console.log(user.user_metadata.full_name);
-
 export default function Home() {
+  const { user, loading } = useUser();
+
+  if (loading) return null;
+
+  const name = user?.user_metadata?.full_name?.split(" ")[0] || "User";
+
   return (
     <div className="space-y-10">
-      <Navbar showUser userName="John Mark" />
+      <Navbar showUser userName={name} />
 
       <section className="flex flex-col lg:flex-row justify-between w-full items-center px-4 lg:px-26 pt-4 lg:pt-0 space-y-4">
         <div>
           <h1 className="font-sora font-bold text-3xl text-black">
-            Hello, John Mark
-            {/* {(user?.user_metadata.full_name).split(" ")[0] || "user"} */}
+            Hello, {name}
           </h1>
           <p className="font-sans text-gray-light text-lg">
             Here are your recorded videos
