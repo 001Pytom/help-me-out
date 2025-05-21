@@ -4,10 +4,23 @@ import AuthForm from "@/components/AuthForm";
 import Navbar from "@/components/layout/navbar";
 import SocialButton from "@/components/social-button";
 import Image from "next/image";
-
+import { createClient } from "@/utils/supabase/client";
 
 const GetStartedPage = () => {
+  const supabase = createClient();
 
+  const handleSocialLogin = async (provider: "google" | "facebook") => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+  
+    if (error) {
+      console.error(`${provider} login error:`, error.message);
+    }
+  };
 
   return (
     <div className="pt-10 px-6 w-full mb-9 flex flex-col gap-9 items-center">
@@ -30,6 +43,7 @@ const GetStartedPage = () => {
             icon={
               <Image src="/google.png" alt="google" width={24} height={24} />
             }
+            onClick={() => handleSocialLogin("google")}
           />
           <SocialButton
             label="Continue with Facebook"
@@ -41,6 +55,7 @@ const GetStartedPage = () => {
                 height={24}
               />
             }
+            onClick={() => handleSocialLogin("facebook")}
           />
         </div>
 
