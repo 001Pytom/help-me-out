@@ -54,16 +54,24 @@ export default function LandingPage() {
     <main className="mx-auto max-w-[1440px] md:px-8 px-4">
       <section className="w-full flex sm:flex-row flex-col items-center justify-between md:pt-36 pt-12 md:pb-28 pb-12 gap-12">
         <div className="max-w-lg w-full sm:w-1/2">
-          <h1 className="text-[#141414] font-bold sm:text-5xl text-4xl mb-5 sm:leading-12 leading-10">Show Them <br /> Don&apos;t Just Tell</h1>
-          <p className="mb-12 text-base font-normal text-[rgba(0, 0, 0, 0.75)]">Help your friends and loved ones by creating and sending videos on how to get things done on a website.</p>
-          <Button variant="default" className="cursor-pointer bg-[#120B48] text-white p-6 font-medium hover:bg-transparent hover:text-[#120848] border border-[#120848] transition-all duration-500 ease-in-out">
+          <h1 className="text-[#141414] font-bold sm:text-5xl text-4xl mb-5 sm:leading-12 leading-10">
+            Show Them <br /> Don&apos;t Just Tell
+          </h1>
+          <p className="mb-12 text-base font-normal text-[rgba(0, 0, 0, 0.75)]">
+            Help your friends and loved ones by creating and sending videos on
+            how to get things done on a website.
+          </p>
+          <Button
+            variant="default"
+            className="cursor-pointer bg-[#120B48] text-white p-6 font-medium hover:bg-transparent hover:text-[#120848] border border-[#120848] transition-all duration-500 ease-in-out"
+          >
             Install HelpMeOut
             <ArrowRight />
           </Button>
         </div>
 
         <div className="relative w-full sm:w-1/2">
-          <Image 
+          <Image
             src={"/heroImg.png"}
             alt="hero image"
             width={680}
@@ -71,7 +79,7 @@ export default function LandingPage() {
             className="relative z-10"
           />
 
-          <Image 
+          <Image
             src={"/hero-decor.svg"}
             alt="hero image"
             width={800}
@@ -83,8 +91,12 @@ export default function LandingPage() {
 
       <section id="features" className="md:py-20 py-12">
         <div className="text-center max-w-xl mx-auto">
-          <h2 className="text-[#141414] font-bold md:text-3xl text-2xl mb-2">Features</h2>
-          <p className="text-[#616163] sm:text-base text-sm font-normal leading-5">Key Highlights Of Our Extension</p>
+          <h2 className="text-[#141414] font-bold md:text-3xl text-2xl mb-2">
+            Features
+          </h2>
+          <p className="text-[#616163] sm:text-base text-sm font-normal leading-5">
+            Key Highlights Of Our Extension
+          </p>
         </div>
 
         <div className="w-full flex md:flex-row flex-col items-center justify-between mt-12 gap-10">
@@ -100,7 +112,9 @@ export default function LandingPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-[#1B233D] font-semibold text-xl">{feature.title}</h3>
+                  <h3 className="text-[#1B233D] font-semibold text-xl">
+                    {feature.title}
+                  </h3>
                   <p className="text-[#616163] sm:text-base text-sm leading-5 mt-2">
                     {feature.description}
                   </p>
@@ -110,7 +124,7 @@ export default function LandingPage() {
           </div>
 
           <div className="md:w-1/2 w-full">
-            <Image 
+            <Image
               src={"/featureImg.png"}
               alt="feature image"
               width={630}
@@ -123,7 +137,9 @@ export default function LandingPage() {
 
       <section id="how-it-works" className="md:py-20 py-12">
         <div className="text-center max-w-xl mx-auto">
-          <h2 className="text-[#141414] font-bold md:text-3xl text-2xl mb-2">How It Works</h2>
+          <h2 className="text-[#141414] font-bold md:text-3xl text-2xl mb-2">
+            How It Works
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-16 gap-4 mt-12">
@@ -132,7 +148,9 @@ export default function LandingPage() {
               <div className="w-12 h-12 rounded-full bg-[#120B48] text-white font-bold text-xl flex items-center justify-center mx-auto">
                 {step.number}
               </div>
-              <h3 className="text-[#1B233D] font-semibold text-xl mt-6">{step.title}</h3>
+              <h3 className="text-[#1B233D] font-semibold text-xl mt-6">
+                {step.title}
+              </h3>
               <p className="text-[#616163] sm:text-base text-sm leading-6 mt-3">
                 {step.description}
               </p>
