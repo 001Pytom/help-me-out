@@ -3,11 +3,15 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
+import { Button } from "@/components/ui/button";
 
 export default function AuthCallbackPage() {
   const router = useRouter();
-  const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
+  const [status, setStatus] = useState<"loading" | "success" | "error">(
+    "loading"
+  );
 
+  // console.log(status);
   useEffect(() => {
     const supabase = createClient();
 
@@ -15,7 +19,7 @@ export default function AuthCallbackPage() {
       if (data.session) {
         setStatus("success");
         setTimeout(() => {
-          router.push("/");
+          router.push("/dashboard");
         }, 2000);
       } else {
         setStatus("error");
@@ -41,13 +45,14 @@ export default function AuthCallbackPage() {
           <h2 className="text-lg font-semibold text-red-600">Oops!</h2>
           <p className="text-sm text-muted-foreground">
             This verification link is invalid or expired.
+            Please try again.
           </p>
-          <button
+          <Button
             onClick={() => router.push("/auth/get-started")}
-            className="text-blue-600 underline mt-2 text-sm"
+            variant="outline"
           >
-            Go back to login
-          </button>
+            ⬅️ back to login
+          </Button>
         </div>
       )}
     </div>
