@@ -5,22 +5,36 @@ import Navbar from "@/components/layout/navbar";
 import SocialButton from "@/components/social-button";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const GetStartedPage = () => {
   const supabase = createClient();
+  const [loading, setLoading] = useState(false);
 
   const handleSocialLogin = async (provider: "google" | "facebook") => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-  
-    if (error) {
-      console.error(`${provider} login error:`, error.message);
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+
+      if (error) {
+        toast.error(`${provider} login failed: ${error.message}`);
+        console.error(`${provider} login error:`, error.message);
+      } else {
+        toast.success(`Redirecting to ${provider}...`);
+      }
+    } catch (err) {
+      toast.error("An unexpected error occurred.");
+    } finally {
+      setLoading(false);
     }
   };
+
 
   return (
     <div className="pt-10 px-6 w-full mb-9 flex flex-col gap-9 items-center">
@@ -39,13 +53,14 @@ const GetStartedPage = () => {
 
         <div className="space-y-6">
           <SocialButton
-            label="Continue with Google"
+            label={loading ? "Loading..." : "Continue with Google"}
             icon={
               <Image src="/google.png" alt="google" width={24} height={24} />
             }
             onClick={() => handleSocialLogin("google")}
+            disabled={loading}
           />
-          <SocialButton
+          {/* <SocialButton
             label="Continue with Facebook"
             icon={
               <Image
@@ -56,7 +71,7 @@ const GetStartedPage = () => {
               />
             }
             onClick={() => handleSocialLogin("facebook")}
-          />
+          /> */}
         </div>
 
         <div className="flex items-center justify-center ">

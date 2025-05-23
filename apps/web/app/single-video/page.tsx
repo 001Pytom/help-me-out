@@ -23,18 +23,18 @@ export default function SingleVideo() {
             <nav className="sm:text-sm text-xs text-[#141414] text-opacity-70 mt-4">
                 <ol className="flex sm:space-x-2 space-x-1">
                     <li>
-                        <Link href="/home" className="hover:underline font-normal text-[#141414] text-opacity-70">Home</Link>
+                        <Link href="/dashboard" className="hover:underline font-normal text-[#141414] text-opacity-70">Home</Link>
                         <span className="sm:mx-1 mx-0.5">/</span>
                     </li>
-                    <li>
-                        <Link href="/videos" className="hover:underline font-normal text-[#141414] text-opacity-70">Recent Videos</Link>
+                    {/* <li>
+                        <Link href="/dashboard" className="hover:underline font-normal text-[#141414] text-opacity-70">Recent Videos</Link>
                         <span className="sm:mx-1 mx-0.5">/</span>
-                    </li>
+                    </li> */}
                     <li className="text-[#413C6D] w-[400px] truncate font-medium leading-normal">How To Create A Facebook Ad Listing</li>
                 </ol>
             </nav>
 
-            <div className="flex items-center gap-4 sm:my-6 my-2 flex-wrap">
+            <div className="flex items-center sm:gap-4 gap-2 sm:my-6 my-2 flex-wrap">
                 <h3 className="text-[#141414] font-semibold sm:text-xl text-lg">How To Create A Facebook Ad Listing </h3>
                 <SquarePen className="w-5 h-5"/>
             </div>   
