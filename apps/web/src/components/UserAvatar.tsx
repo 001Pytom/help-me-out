@@ -46,7 +46,7 @@ export default function UserAvatar({ size = 40, editable = false }: Props) {
       .upload(fileName, file, { upsert: true });
 
     if (error) {
-      toast.error( "Upload failed - try again.");
+      toast.error("Upload failed - try again.");
       setLoading(false);
       return;
     } else {
@@ -79,6 +79,7 @@ export default function UserAvatar({ size = 40, editable = false }: Props) {
     const { error } = await supabase.auth.updateUser({
       data: { avatar_url: null },
     });
+    setUrl(null);
     setLoading(false);
 
     if (error) {
