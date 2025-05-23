@@ -56,11 +56,11 @@ export const updateSession = async (request: NextRequest) => {
   return supabaseResponse;
 };
 
-// export const config = {
-//   matcher: [
-//     "/", // main app
-//     // "/dashboard/:path*",
-//     "/single-video/:path*",
-//     "/auth/:path*", // login/signup
-//   ],
-// };
+export const config = {
+  matcher: [
+    "/", // main app
+    "/dashboard/:path*",
+    "/single-video/:path*",
+    "/auth/:path*", // login/signup
+  ],
+};

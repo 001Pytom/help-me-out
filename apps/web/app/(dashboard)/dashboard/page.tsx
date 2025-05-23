@@ -22,6 +22,7 @@ export default function Home() {
   if (loading) return null;
 
   const name = user?.user_metadata?.full_name?.split(" ")[0] || "User";
+  
 
   return (
     <div className="space-y-10">
@@ -29,8 +30,8 @@ export default function Home() {
 
       <section className="flex flex-col lg:flex-row justify-between w-full items-center px-4 lg:px-26 pt-4 lg:pt-0 space-y-4">
         <div>
-          <h1 className="font-sora font-bold text-3xl text-black">
-            Hello, {name}
+          <h1 className="font-sora font-bold text-3xl text-black ">
+            Hello,<span className="capitalize"> {name}</span>
           </h1>
           <p className="font-sans text-gray-light text-lg">
             Here are your recorded videos
