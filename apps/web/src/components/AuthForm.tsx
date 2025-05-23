@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { login, signup } from "@/lib/utils/auth-helpers";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -58,19 +59,23 @@ const AuthForm = () => {
     try {
       if (mode === "login") {
         await login(data.email, data.password);
-        router.push("/dashboard"); // redirect to main app
+        toast.success("Login successful!");
+        router.push("/dashboard");
         // console.log(data);
       } else {
         const signupData = data as z.infer<typeof signupSchema>;
         await signup(signupData.email, signupData.password, signupData.name);
-        router.push("/auth/verify-email"); // show verify email screen
+        toast.success("Signup successful. Please verify your email.");
+        router.push("/auth/verify-email");
       }
       form.reset();
     } catch (error: unknown) {
       if (error instanceof Error) {
-        alert(error.message || "Something went wrong");
+        // alert(error.message || "Something went wrong");
+        toast.error(error.message || "Something went wrong");
       } else {
         alert("An unknown error occurred");
+        toast.error("An unknown error occurred");
       }
     } finally {
       setLoading(false);
