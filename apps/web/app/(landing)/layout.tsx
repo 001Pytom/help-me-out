@@ -1,5 +1,5 @@
 import Footer from "@/components/layout/footer";
-import { Header } from "@/components/layout/header";
+// import { Header } from "@/components/layout/header";
 
 export default function LandingLayout({
   children,
@@ -8,7 +8,7 @@ export default function LandingLayout({
 }>) {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {children}
       <Footer />
     </>
