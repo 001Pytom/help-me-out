@@ -158,7 +158,7 @@ const AuthForm = () => {
 
         <Button
           type="submit"
-          className="w-full bg-primary rounded-lg py-4 text-white font-medium text-lg"
+          className="w-full bg-primary rounded-lg py-4 text-white font-medium text-lg cursor-pointer"
           disabled={loading}
         >
           {loading ? (
@@ -185,7 +185,7 @@ const AuthForm = () => {
             : "Already have an account?"}{" "}
           <button
             type="button"
-            className="underline italic text-blue-600 hover:text-blue-800 "
+            className="underline italic text-blue-600 hover:text-blue-800 cursor-pointer"
             onClick={() => {
               const newMode = mode === "login" ? "signup" : "login";
               setMode(newMode);
