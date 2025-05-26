@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "HelpMeOut",
+  "version": "1.0.0",
+  "description": "Screen and tab recorder with camera, mic, and sharing support",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "tabs", "activeTab", "desktopCapture", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "48": "icon.png"
+  }
+}
