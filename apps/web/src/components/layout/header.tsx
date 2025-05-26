@@ -4,7 +4,13 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Logo from "../ui/logo";
-export function Header() {
+
+type HeaderProps = {
+  onFeaturesClick: () => void
+  onHowItWorksClick: () => void
+}
+
+export function Header({ onFeaturesClick, onHowItWorksClick }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -14,21 +20,21 @@ export function Header() {
 
         <ul className="hidden sm:flex items-center gap-10">
           <li>
-            <Link
-              href="#features"
-              className="text-[#141414] text-base font-medium hover:text-[#120B48] hover:underline transition-all duration-300 ease-in-out"
+            <button
+              onClick={onFeaturesClick}
+              className="text-[#141414] border-none text-base font-medium hover:text-[#120B48] hover:underline cursor-pointer transition-all duration-300 ease-in-out"
             >
               Features
-            </Link>
+            </button>
           </li>
 
           <li>
-            <Link
-              href="#how-it-works"
-              className="text-[#141414] text-base font-medium hover:text-[#120B48] hover:underline transition-all duration-300 ease-in-out"
+            <button
+              onClick={onHowItWorksClick}
+              className="text-[#141414] border-none text-base font-medium hover:text-[#120B48] hover:underline cursor-pointer transition-all duration-300 ease-in-out"
             >
               How It Works
-            </Link>
+            </button>
           </li>
         </ul>
 
@@ -57,20 +63,24 @@ export function Header() {
           }`}
         >
           <nav className="flex flex-col items-center gap-6 py-6">
-            <Link
-              href="#features"
-              className="text-[#141414] text-base font-medium"
-              onClick={() => setIsOpen(false)}
+            <button
+              className="text-[#141414] text-base font-medium border-none cursor-pointer"
+              onClick={() => {
+                onFeaturesClick();
+                setIsOpen(false);
+              }}
             >
               Features
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="text-[#141414] text-base font-medium"
-              onClick={() => setIsOpen(false)}
+            </button>
+            <button
+              className="text-[#141414] text-base font-medium border-none cursor-pointer"
+              onClick={() => {
+                onHowItWorksClick();
+                setIsOpen(false);
+              }}
             >
               How It Works
-            </Link>
+            </button>
             <Link
               href="/"
               className="text-[#120B48] font-semibold text-lg cursor-pointer"
